@@ -1,0 +1,31 @@
+﻿@model AjaxHelperDemo.Models.Emp
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+@using(Ajax.BeginForm("Index",new AjaxOptions() { OnSuccess="fnSuccess",OnFailure="fnFailure"}))
+{
+    <div>
+        @Html.EditorFor(x=>x.fname)<br /><br />
+        @Html.EditorFor(x=>x.lname)<br /><br />
+        @Html.EditorFor(x=>x.email)<br /><br />
+
+        <input type="submit" value="Click Me" />
+    </div>
+}
+
+<script>
+    function fnSuccess(data) {
+        console.log(data)
+        alert("Hello from success")
+    }
+
+    function fnFailure(err) {
+        console.error(err)
+        alert("Hello from error")
+    }
+</script>
+
+
